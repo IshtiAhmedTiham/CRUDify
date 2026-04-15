@@ -2,5 +2,5 @@ from pydantic_settings import BaseSettings
 
 class Configuration(BaseSettings):
     @property
-    def database_url(self):
-        return "sqlite:///app.db"
+    def Database(self):
+        return "postgresql://postgres:hello@localhost/fitness"
