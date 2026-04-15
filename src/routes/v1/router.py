@@ -1,11 +1,11 @@
-# from fastapi import APIRouter
-# from src.controllers.api.v1.user import user_controller
+from fastapi import APIRouter
+from src.controllers.api.v1.user import user_controller
 
 
-# router = APIRouter()
+router = APIRouter()
 
 
-# router.include_router(user_controller.router, prefix="/user")
+router.include_router(user_controller.router, prefix="/user")
 
 
 
