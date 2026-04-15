@@ -59,3 +59,6 @@ def delete_user(id:int, db:Session = Depends(get_db)):
             status_code = status.HTTP_404_NOT_FOUND,
             detail = f"error : {str(error)}" 
         )
+    
+
+
