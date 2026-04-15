@@ -7,4 +7,3 @@ class User(Base):
     name = Column(String, nullable=True)
     email = Column(String, nullable=False)
     password = Column(String, nullable=False)
-
