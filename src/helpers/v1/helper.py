@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Depends, HTTPException
+from fastapi import status, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src.models.v1.user_model import User as UserModel
 from src.schemas.v1.user_schema import UserCreate
