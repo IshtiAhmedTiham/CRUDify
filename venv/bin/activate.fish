@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/ishti-ahmed/Documents/Python_Programming/class/fastapi/SQLite/lesson_1/venv
+set -gx VIRTUAL_ENV /home/ishti-ahmed/Documents/Python_Programming/class/lesson/CRUDify/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
