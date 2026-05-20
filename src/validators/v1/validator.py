@@ -1,7 +1,7 @@
 from fastapi import status, Depends, HTTPException
 from src.schemas.v1.user_schema import UserCreate
 from sqlalchemy.orm import Session
-from src.config.v1.database import get_db
+from src.config.v1.sqlite_database import get_db
 from src.models.v1.user_model import UserModel
 
 
@@ -13,4 +13,5 @@ def validate_unique_email(data : UserCreate, db : Session = Depends(get_db)):
             status_code = status.HTTP_409_CONFLICT,
             detail = "Email already exist"
         )
+    
     return data

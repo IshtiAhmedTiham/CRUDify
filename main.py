@@ -1,11 +1,11 @@
 from fastapi import FastAPI 
 from src.routers.v1.router import router
-from src.config.v1.database import init_db as init_db
+from src.config.v1.sqlite_database import init_db as sqlite_init_db
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app:FastAPI):
-    init_db()
+    sqlite_init_db()
     yield
 
 
