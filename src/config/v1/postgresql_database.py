@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.models.v1.customer_model import CustomerModel
 from .base import Base
 
 POSTGRESQL_DATABASE_URL = "postgresql://postgres:hello@localhost/fitness"

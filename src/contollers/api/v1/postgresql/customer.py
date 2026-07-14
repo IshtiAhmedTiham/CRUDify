@@ -52,6 +52,34 @@ def read_customer(filters : Annotated[CustomerFilters,Query()], db : Session = D
         )
 
 
+#Update
+@router.put("/{id}",response_model = ResponseCustomer, status_code = status.HTTP_200_OK)
+def update_customer(data : CreateCustomer, id : int, db : Session = Depends(get_db)):
+    try:
+        customer = db.query(CustomerModel).filter(CustomerModel.id == id).first()
+
+        if not customer:
+            raise HTTPException(
+                status_code = status.HTTP_404_NOT_FOUND,
+                detail = "Data not found"
+            )
+        
+        updated_data = data.model_dump()
+        for key,value in updated_data.items():
+            setattr(customer,key,value)
+
+        db.commit()
+        db.refresh(customer)
+
+        return customer
+    
+    except Exception as error:
+        raise HTTPException(
+            status_code = status.HTTP_409_CONFLICT,
+            detail = f"Error : {str(error)}"
+        )
+
+
 #Delete
 @router.delete("/{id}",status_code = status.HTTP_200_OK)
 def delete_customer(id :int, db : Session = Depends(get_db)):

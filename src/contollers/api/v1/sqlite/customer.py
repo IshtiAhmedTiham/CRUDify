@@ -7,7 +7,6 @@ from src.validators.v1.validator import validate_unique_email
 from typing import Annotated
 from src.filters.v1.customer_filter import CustomerFilters
 from src.utils.utils import hash_password
-from src.authentication.dependencies import get_current_user
 
 router = APIRouter()
 
@@ -38,7 +37,7 @@ def create_customer(data : CreateCustomer = Depends(validate_unique_email), db :
 
 #Read
 @router.get("/",response_model = list[ResponseCustomer], status_code = status.HTTP_200_OK)
-def read_customer(filters : Annotated[CustomerFilters,Query()], current_user = Depends(get_current_user) ,db : Session = Depends(get_db)):
+def read_customer(filters : Annotated[CustomerFilters,Query()], db : Session = Depends(get_db)):
     try:
         customers = db.query(CustomerModel)
         
@@ -59,7 +58,7 @@ def read_customer(filters : Annotated[CustomerFilters,Query()], current_user = D
 
 #Update
 @router.put("/{id}", status_code=status.HTTP_200_OK, response_model=ResponseCustomer)
-def customer_update(data: CreateCustomer, id: int,current_user = Depends(get_current_user), db: Session = Depends(get_db)):
+def customer_update(data: CreateCustomer, id: int, db: Session = Depends(get_db)):
     try:
         data.password = hash_password(data.password)
 
@@ -88,7 +87,7 @@ def customer_update(data: CreateCustomer, id: int,current_user = Depends(get_cur
 
 #Delete
 @router.delete("/{id}",status_code = status.HTTP_200_OK)
-def delete_customer(id : int,current_user = Depends(get_current_user), db : Session = Depends(get_db)):
+def delete_customer(id : int, db : Session = Depends(get_db)):
     customers = db.query(CustomerModel).filter(CustomerModel.id == id).first()
 
     if customers is None:
