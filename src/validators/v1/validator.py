@@ -1,7 +1,7 @@
 from fastapi import status, Depends, HTTPException
 from src.schemas.v1.customer_schema import CreateCustomer, ResponseCustomer
 from sqlalchemy.orm import Session
-from src.config.v1.postgresql_database import get_db
+from src.config.v1.database import get_db
 from src.models.v1.customer_model import CustomerModel
 
 

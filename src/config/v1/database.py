@@ -1,21 +1,22 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from src.models.v1.customer_model import CustomerModel
-from .base import Base
+from sqlalchemy.orm import declarative_base
 
-POSTGRESQL_DATABASE_URL = "postgresql://postgres:hello@localhost/fitness"
+
+POSTGRESQL_DATABASE_URL = "postgresql://postgres:hello@localhost/CRUDify"
 def get_engine():
     engine = create_engine(POSTGRESQL_DATABASE_URL)
     return engine
 
+Base  = declarative_base()
+
 session_local = sessionmaker(autocommit=False, autoflush=False, bind=get_engine())
 def get_db():
     db = session_local()
-    try:
+    try: 
         yield db
     finally:
         db.close()
 
-def postgresql_init_db():
-    from src.models.v1.customer_model import CustomerModel
+def init_db():
     Base.metadata.create_all(bind=get_engine())
