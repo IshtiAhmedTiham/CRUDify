@@ -24,6 +24,8 @@ git clone git@github.com:IshtiAhmedTiham/CRUDify.git
 pip install "fastapi[standard]"
 pip install psycopg2-binary
 pip install sqlalchemy
+pip install 'pwdlib[argon2]'
+pip install python-jose[cryptography]
 ```
  
 ---
