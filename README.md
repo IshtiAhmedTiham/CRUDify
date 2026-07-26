@@ -1,7 +1,6 @@
 # 🚀 CRUDify
 
 [![GitHub license](https://shields.io)](https://github.com)
-[![GitHub stars](https://shields.io)](https://github.com/stargazers)
 [![Python Version](https://shields.io)](https://www.python.org)
 
 **CRUDify** is a modern and powerful backend project built to demonstrate advanced security implementation and multi-database system architectures. It combines solid coding practices with production-ready features.
